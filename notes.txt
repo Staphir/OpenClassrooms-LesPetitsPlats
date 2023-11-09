@@ -1,1 +1,3 @@
-# OpenClassrooms-LesPetitsPlats
+Bootstrap 5, tailwind css classique ?
+header avec bar de recherche ? (juste titre en position absolute ?) 
+js recipes format json -> utilisation const ou requête ? mais du coup transformation en json ?
