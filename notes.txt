@@ -1,3 +1,2 @@
-Bootstrap 5, tailwind css classique ?
-header avec bar de recherche ? (juste titre en position absolute ?) 
-js recipes format json -> utilisation const ou requête ? mais du coup transformation en json ?
+logo les petits plats donc pas de h1 ?
+logo recherche fa-thin pro donc pas accès seulement le solid (plus épais)
