@@ -18,10 +18,10 @@
         </span>
         <h2 class="font-title text-yellow text-5xl text-center w-1/2 leading-normal mt-44 mb-7">CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES</h2>
         <form id="search-bar" class="w-2/3 relative">
-            <input id="searchKeyWord" type="text" placeholder="Rechercher une recette, un ingredient, ..." class="rounded-lg py-6 pl-8 w-full placeholder:text-grey text-grey focus:border-none">
-            <i class="fa-solid fa-xmark fa-xl text-grey absolute inset-y-9 right-20 invisible"></i>
-            <button id="search-button" class="absolute px-3.5 py-3 inset-y-3 right-3 bg-black rounded-lg">
-                <i class="fa-solid fa-magnifying-glass fa-lg text-white "></i>
+            <input id="search-keyWord" type="text" placeholder="Rechercher une recette, un ingredient, ..." class="rounded-lg py-6 pl-8 w-full placeholder:text-grey text-grey focus:border-none">
+            <i id="cross-search-bar" class="fa-solid fa-xmark fa-xl text-grey absolute inset-y-9 right-20 cursor-pointer invisible"></i>
+            <button id="search-button" class="absolute px-3.5 py-3 inset-y-3 right-3 bg-black rounded-lg transition duration-500">
+                <i id="search-icon" class="fa-solid fa-magnifying-glass fa-lg text-white transition duration-500"></i>
             </button>
         </form>
         <img src="../assets/recipes_images/recipe_header.jpg" alt="Plat de présentation" class="bg-cover absolute top-0 left-0 w-full -z-10">

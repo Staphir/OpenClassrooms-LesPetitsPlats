@@ -12,7 +12,7 @@ module.exports = {
       fontFamily: {
         'body'  : ['Manrope', 'sans-serif'],
         'title' : ['Anton', 'sans-serif'],
-      }
+      },
     },
   },
   plugins: [],
