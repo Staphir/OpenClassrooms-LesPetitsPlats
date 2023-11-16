@@ -1,2 +1,8 @@
 logo les petits plats donc pas de h1 ?
-logo recherche fa-thin pro donc pas accès seulement le solid (plus épais)
+
+listes filtres => id == placement dans liste choices et dans ul puis enlève du ul et de la liste choices (change ensuite ids ?)
+               => dict -> id : nom filtre
+cacher de la liste et pas enlever 
+overflow hidden + scroll
+
+affiner dropdown avec la recherche principale aussi

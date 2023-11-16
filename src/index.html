@@ -18,7 +18,7 @@
         </span>
         <h2 class="font-title text-yellow text-5xl text-center w-1/2 leading-normal mt-44 mb-7">CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES</h2>
         <form id="search-bar" class="w-2/3 relative">
-            <input id="search-keyWord" type="text" placeholder="Rechercher une recette, un ingredient, ..." class="rounded-lg py-6 pl-8 w-full placeholder:text-grey text-grey focus:border-none">
+            <input id="search-keyword" type="text" placeholder="Rechercher une recette, un ingredient, ..." class="rounded-lg py-6 pl-8 w-full placeholder:text-grey text-grey focus:border-none">
             <i id="cross-search-bar" class="fa-solid fa-xmark fa-xl text-grey absolute inset-y-9 right-20 cursor-pointer invisible"></i>
             <button id="search-button" class="absolute px-3.5 py-3 inset-y-3 right-3 bg-black rounded-lg transition duration-500">
                 <i id="search-icon" class="fa-solid fa-magnifying-glass fa-lg text-white transition duration-500"></i>
@@ -26,15 +26,43 @@
         </form>
         <img src="../assets/recipes_images/recipe_header.jpg" alt="Plat de présentation" class="bg-cover absolute top-0 left-0 w-full -z-10">
     </header>
-    <main>
-        <span>
-            <span id="dropdowns-search"></span>
-            <p id="nb-recipes" class="font-title text-xl"></p>
+    <main class="ml-24 mr-24 mt-56 mb-40">
+        <span class="flex flex-row justify-between items-center">
+            <span id="dropdowns-search" class="flex flex-row justify-between gap-16"></span>
+            <p id="nb-recipes" class="font-title text-xl">1500 recettes</p>
         </span>
         <section id="gallery-recipes"></section>
     </main>
     <script src="scripts/utils/recipes.js"></script>
     <script src="scripts/templates/recipe.js"></script>
+    <script src="scripts/templates/dropdown.js"></script>
+    <script src="scripts/utils/searchbar.js"></script>
     <script src="scripts/pages/index.js"></script>
 </body>
 </html>
+                <!-- <div>
+                    <button id="ingredients-dropdown-btn" class="rounded-xl bg-white border-none p-4" onclick="toggleDropdownI()">
+                        Ingrédients
+                        <i id="ingredients-chevron" class="fa-solid fa-chevron-down ml-14"></i>
+                    </button>
+                    <ul id="ingredients-list" class="bg-white rounded-b-xl border-none -mt-2 absolute invisible origin-top scale-y-0">
+                        <li class="px-4 pb-5">
+                            <form id="ingredients-search-bar" class="relative">
+                                <input id="ingredients-keyword" type="text" class="w-[9.75rem] py-1 text-grey-light border border-grey-light rounded-sm focus:ring-1 focus:ring-grey-light">
+                                <i id="ingredients-cross-search-bar" class="fa-solid fa-xmark fa-sm text-grey-light absolute inset-y-[1.15rem] right-9 cursor-pointer invisible"></i>
+                                <button id="ingredients-search-button" class="absolute inset-y-[0.4rem] right-3">
+                                    <i id="ingredients-search-icon" class="fa-solid fa-magnifying-glass fa-sm text-grey-light"></i>
+                                </button>
+                            </form>
+                        </li>
+                        <li class="px-4 py-1 hover:bg-yellow">
+                            Jus de citron
+                        </li>
+                        <li class="px-4 py-1 hover:bg-yellow">
+                            Glaçons
+                        </li>
+                        <li class="px-4 py-1 hover:bg-yellow">
+                            Tomate
+                        </li>
+                    </ul>
+                </div> -->

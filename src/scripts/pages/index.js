@@ -1,52 +1,51 @@
 "use strict";
 
-const searchButton = document.querySelector('#search-button');
-const searchBar = document.querySelector('#search-keyWord');
-const crossSearchBar = document.querySelector('#cross-search-bar');
-const searchIcon = document.querySelector('#search-icon')
-
 /**
- * Change color of search button and icon when mouse over it
+ * Transform set to dictionnary with each key is index
+ *
+ * @param {Set} set
+ * @returns {object} dict
  */
-function searchButtonColorOver() {
-    searchButton.classList.add('bg-yellow')
-    searchIcon.classList.add('text-black');
+function setToDict(set) {
+    const dict = {};
+    let index = 0;
+
+    for(let item of set) {
+        dict[index] = item;
+        index += 1;
+    }
+
+    return dict;
 }
 
 /**
- * Change color of search button and icon when mouse leave it
+ * Init dropdowns of search tags
  */
- function searchButtonColorLeave() {
-    searchButton.classList.remove('bg-yellow')
-    searchIcon.classList.remove('text-black');
+function initDropdowns() {
+    const ingredientChoices = setToDict(ingredientsSet);
+    const applianceChoices = setToDict(appliancesSet);
+    const ustensilChoices = setToDict(ustensilsSet);    
+
+    const dropdownIngredientsModel = dropdownTemplate('Ingrédient', 'ingredient', ingredientChoices);
+    const dropdownAppliancesModel = dropdownTemplate('Appareils', 'appliance', applianceChoices);
+    const dropdownUstensilsModel = dropdownTemplate('Ustensiles', 'ustensil', ustensilChoices);
+
+    const dropdownsSpan = document.querySelector('#dropdowns-search');
+
+    dropdownsSpan.appendChild(dropdownIngredientsModel.getDropdownDOM());
+    dropdownsSpan.appendChild(dropdownAppliancesModel.getDropdownDOM());
+    dropdownsSpan.appendChild(dropdownUstensilsModel.getDropdownDOM());
 }
 
 /**
- * Display button erase search text 
+ * Index main function
  */
-function displayCrossButton() {
-    crossSearchBar.classList.remove('invisible');
-    crossSearchBar.classList.add('visible');
+function init() {
+    initIngredientsSet();
+    initAppliancesSet();
+    initUstensilsSet();
+
+    initDropdowns();
 }
 
-/**
- * Hide button erase search text 
- */
-function hideCrossutton() {
-    crossSearchBar.classList.remove('visible');
-    crossSearchBar.classList.add('invisible');
-}
-
-/**
- * Erase text in search bar
- */
-function eraseSearchText() {
-    crossSearchBar.blur();
-    searchBar.value = '';
-}
-
-searchButton.addEventListener('mouseover', searchButtonColorOver);
-searchButton.addEventListener('mouseleave', searchButtonColorLeave);
-searchBar.addEventListener('focus', displayCrossButton);
-searchBar.addEventListener('blur', hideCrossutton);
-crossSearchBar.addEventListener('mousedown', eraseSearchText);
+init();
