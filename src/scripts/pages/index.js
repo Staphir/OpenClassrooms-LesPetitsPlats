@@ -38,6 +38,20 @@ function initDropdowns() {
 }
 
 /**
+ * Init x recipes in the gallery of recipes cards
+ */
+function initRecipes() {
+    const recipesSection = document.querySelector('#gallery-recipes');
+
+    for(let i = 1; i < recipes.length; i++) {
+        const recipeModel = recipeTemplate(i);
+        const recipeCardDOM = recipeModel.getRecipeDOM();
+
+        recipesSection.appendChild(recipeCardDOM);
+    }
+}
+
+/**
  * Index main function
  */
 function init() {
@@ -46,6 +60,8 @@ function init() {
     initUstensilsSet();
 
     initDropdowns();
+
+    initRecipes();
 }
 
 init();

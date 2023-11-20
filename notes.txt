@@ -1,8 +1,14 @@
-logo les petits plats donc pas de h1 ?
-
 listes filtres => id == placement dans liste choices et dans ul puis enlève du ul et de la liste choices (change ensuite ids ?)
                => dict -> id : nom filtre
 cacher de la liste et pas enlever 
-overflow hidden + scroll
 
 affiner dropdown avec la recherche principale aussi
+
+---
+
+toutes les recettes dans le html puis invisible ou non 
+ou crée au fur et à mesure et cache une fois que c'est créé mais qu'on veut plus l'afficher
+
+-----
+
+Hauteur des cartes recettes égales ?
