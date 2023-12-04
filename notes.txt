@@ -12,3 +12,19 @@ ou crée au fur et à mesure et cache une fois que c'est créé mais qu'on veut 
 -----
 
 Hauteur des cartes recettes égales ?
+
+4. La recherche principale affiche les premiers résultats le plus rapidement possible
+    |_> limite les résultats max ? actualise recettes avant de modifier les dropdown filtres ?
+
+Doc investigation plus "bas niveau" que l'exemple
+
+même taille sinon scroll
+
+
+boucle recette titre ou descr saisie si oui parcours ustensil ingr apparei et pour chaque append it donc liste tag affiné
+
+------------
+
+On change et pas onclick pour la recherche ? Du coup symbole loupe 'inutile'
+enlever éléments et non reload liste entière ?
+pareil pour dropdown
