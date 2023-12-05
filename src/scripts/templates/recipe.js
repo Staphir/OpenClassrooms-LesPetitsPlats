@@ -4,11 +4,11 @@
 * Recipe model
 *
 * @param {int} id - Recipe id in database
-* @returns {{ id: int; name: string; image: string; time: int; description: string; ingredients: object; getRecipeDOM: () => object; }}
+* @returns {{ id: int; name: string; image: string; time: int; description: string; ingredients: object; appliance: string; ustensils: object; getRecipeDOM: () => object; }}
 */
 function recipeTemplate(id) {
     const {
-        name, image, time, description, ingredients
+        name, image, time, description, ingredients, appliance, ustensils
     } = getRecipeById(id);
     
     function getRecipeDOM() {
@@ -47,16 +47,14 @@ function recipeTemplate(id) {
         
         descriptionP.className = 'leading-5';
         descriptionP.textContent = description;
-        
-        // ingredientsSection
-        
+                
         titleIngredients.className = 'text-grey text-xs mb-4';
         titleIngredients.textContent = 'INGRÉDIENTS';
         
         ingredientsGridDiv.className = 'grid grid-cols-2 gap-y-4'
         
         for(let recipeIngredient of ingredients) {
-                        let div = document.createElement('div');
+            let div = document.createElement('div');
             let {ingredient, quantity, unit} = recipeIngredient;
             let ingredientName = document.createElement('h5');
             
@@ -103,6 +101,8 @@ function recipeTemplate(id) {
         time,
         description,
         ingredients,
+        appliance,
+        ustensils,
         getRecipeDOM,
     }
 }

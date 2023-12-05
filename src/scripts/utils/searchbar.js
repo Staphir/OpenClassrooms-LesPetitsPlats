@@ -36,10 +36,42 @@ function toggleCrossButton() {
 function eraseSearchText() {
     crossSearchBar.blur();
     searchBar.value = '';
+    searchRecipes();
+}
+
+/**
+ * Filter recipes with search bar and tags
+ */
+function searchRecipes() {
+    event.preventDefault();
+
+    let filteredRecipeModels = [];
+
+    if(searchBar.value.length > 2) {
+        for(let recipeModel of recipeModels) {
+            if(searchTextInRecipe(recipeModel)) {
+                filteredRecipeModels.push(recipeModel);
+            }
+        }
+    } else {
+        for(let recipeModel of recipeModels) {
+            filteredRecipeModels.push(recipeModel);
+        }
+    }
+
+    filterByTags(filteredRecipeModels)
 }
 
 searchButton.addEventListener('mouseover', searchButtonColorOver);
 searchButton.addEventListener('mouseleave', searchButtonColorLeave);
+searchButton.addEventListener('click', searchRecipes);
+
 searchBar.addEventListener('focus', toggleCrossButton);
 searchBar.addEventListener('blur', toggleCrossButton);
+searchBar.addEventListener('input', () => {
+    if(searchBar.value.length > 2 || searchBar.value.length === 0) { 
+        searchRecipes()
+    }
+});
+
 crossSearchBar.addEventListener('mousedown', eraseSearchText);

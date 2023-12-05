@@ -5,26 +5,54 @@
 *
 * @param {string} name - Name of dropdown 
 * @param {string} idName - Name use for id of elements
-* @param {object} choices - Object -> id: name choice
+* @param {object} choices - Name choices
 * @returns {{ name: string; idName: string; choices: object; getDropdownDOM: () => object; }}
 */
 function dropdownTemplate(name, idName, choices) {
-    
+
     /**
     * Display/hide cross button in search bar
     */
     function toggleCrossButton() {
         document.querySelector(`#${idName}-cross-search-bar`).classList.toggle('invisible');
     }
-    
+
+    function searchTextInChoices(choiceName) {
+        let searchText = document.querySelector(`#${idName}-keyword`).value;
+        searchText = searchText.toLowerCase();
+
+        return choiceName.toLowerCase().includes(searchText)
+    }
+
+    function searchTags() {
+        event.preventDefault();
+        
+        let sortedChoices = Array();
+        for(let choice of choices) {
+            if(searchTextInChoices(choice)) {
+                sortedChoices.push(choice);
+            }
+        }
+
+        const listChoices = document.querySelectorAll(`.${idName}`);
+        for(let choice of listChoices) {
+            if(includes(sortedChoices, choice.textContent)) {
+                choice.style.display = 'block';
+            } else {
+                choice.style.display = 'none';
+            }
+        }
+    }
+        
     /**
     * Erase text in search bar
     */
-    function eraseSearchInput() {
+     function eraseSearchInput() {
         document.querySelector(`#${idName}-cross-search-bar`).blur();
         document.querySelector(`#${idName}-keyword`).value = '';
+        searchTags();
     }
-    
+
     /**
     * Open/Close dropdown
     */
@@ -37,7 +65,7 @@ function dropdownTemplate(name, idName, choices) {
         
         dropdownChevron.classList.toggle('rotate-180');
     }
-    
+
     /**
     * Return DOM that create dropdown
     *
@@ -54,7 +82,7 @@ function dropdownTemplate(name, idName, choices) {
         const searchBarCrossI = document.createElement('i');
         const searchBarButton = document.createElement('button');
         const searchBarSearchI = document.createElement('i');
-        const choicesList = {};
+        let choicesList = Array();
         
         mainDiv.className = 'w-48';
         
@@ -86,12 +114,13 @@ function dropdownTemplate(name, idName, choices) {
         
         searchBarSearchI.id = `${idName}-search-icon`;
         searchBarSearchI.className = 'fa-solid fa-magnifying-glass fa-sm text-grey-light';
-        
-        for(let choiceIndex in choices) {
-            choicesList[choiceIndex] = document.createElement('li');
-            choicesList[choiceIndex].id = `choice-${choiceIndex}`;
-            choicesList[choiceIndex].className = 'px-4 py-1 hover:bg-yellow truncate';
-            choicesList[choiceIndex].textContent = choices[choiceIndex];
+
+        for(let choice of choices) {
+            let newChoiceLi = document.createElement('li');
+            newChoiceLi.className = `${idName} px-4 py-1 hover:bg-${idName} truncate cursor-pointer`;
+            newChoiceLi.textContent = choice;
+            newChoiceLi.addEventListener('click', selectTag);
+            choicesList.push(newChoiceLi);
         }
         
         mainButton.appendChild(chevronI);
@@ -105,8 +134,9 @@ function dropdownTemplate(name, idName, choices) {
         searchBarLi.appendChild(searchBarForm);
         
         choicesUl.appendChild(searchBarLi);
-        for(let choiceLiIndex in choicesList) {
-            choicesUl.appendChild(choicesList[choiceLiIndex]);
+
+        for(let choice of choicesList) {
+            choicesUl.appendChild(choice);
         }
         
         mainDiv.appendChild(mainButton);
@@ -114,7 +144,9 @@ function dropdownTemplate(name, idName, choices) {
         
         searchBarInput.addEventListener('focus', toggleCrossButton);
         searchBarInput.addEventListener('blur', toggleCrossButton);
+        searchBarInput.addEventListener('input', searchTags);
         searchBarCrossI.addEventListener('mousedown', eraseSearchInput);
+        searchBarButton.addEventListener('click', () => event.preventDefault());
         
         return mainDiv;
     }
